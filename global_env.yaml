@@ -1,0 +1,16 @@
+type: environment.insomnia.rest/5.0
+name: SE-Robin-GIT-Global-ENV
+meta:
+  id: wrk_536cd42d552547fba004b8ef131d95b4
+  created: 1744639446697
+  modified: 1744639446697
+environments:
+  name: Base Environment
+  meta:
+    id: env_fb1c4b8a71ca8deb0b98b38df3d08a843de9a2fe
+    created: 1744639446700
+    modified: 1744639523891
+    isPrivate: false
+  data:
+    DP:8000: http://localhost:8000
+    DP:9000: http://localhost:9000

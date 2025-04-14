@@ -4,19 +4,274 @@ meta:
   id: wrk_091f55df4ce14a07b9aad79d390aad6c
   created: 1744637544138
   modified: 1744637544138
+collection:
+  - name: Transactions
+    meta:
+      id: fld_e664c69314c7421abdded55487ad0ab7
+      created: 1744637828167
+      modified: 1744637828167
+      sortKey: -1744637828167
+      description: Everything about transactions
+    children:
+      - url: "{{ _.base_url }}/transactions"
+        name: List all transactions
+        meta:
+          id: req_887b802137df44e69fec4e8b17e8eea7
+          created: 1744637828167
+          modified: 1744637828167
+          isPrivate: false
+          description: Lists all transactions
+          sortKey: -1744637828168
+        method: GET
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions"
+        name: Create new transaction
+        meta:
+          id: req_39a523234f1d46538a9e6d73bc039972
+          created: 1744637828168
+          modified: 1744637828168
+          isPrivate: false
+          description: Initiate a transaction
+          sortKey: -1744637828168
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "id": 42,
+              "source": "GR872659435350353",
+              "senderName": "Max Mustermann",
+              "destination": "DE8412325587359375895",
+              "amount": 42,
+              "currency": "EUR",
+              "subject": "Invoice #42-08/15"
+            }
+        headers:
+          - name: Content-Type
+            disabled: false
+            value: application/json
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Get specific transactions
+        meta:
+          id: req_28e5841f41484854a35ca8aeaeafd9f3
+          created: 1744637828169
+          modified: 1744637828169
+          isPrivate: false
+          description: Returns a post by id
+          sortKey: -1744637828169
+        method: GET
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Update a transaction
+        meta:
+          id: req_96f341014b7e4eabb4e82cb063b8f1b5
+          created: 1744637828169
+          modified: 1744637828169
+          isPrivate: false
+          description: Change a transaction
+          sortKey: -1744637828169
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "id": 42,
+              "source": "GR872659435350353",
+              "senderName": "Max Mustermann",
+              "destination": "DE8412325587359375895",
+              "amount": 42,
+              "currency": "EUR",
+              "subject": "Invoice #42-08/15"
+            }
+        headers:
+          - name: Content-Type
+            disabled: false
+            value: application/json
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Cancel a transaction
+        meta:
+          id: req_d2299f7f7ce2496ab2b33accbfa774e1
+          created: 1744637828170
+          modified: 1744637828170
+          isPrivate: false
+          description: Cancel a transaction
+          sortKey: -1744637828170
+        method: DELETE
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - url: " https://keycloak.apim.eu/auth/realms/kong/protocol/openid-connect/token"
+    name: Get Access Token
+    meta:
+      id: req_8d334605528b42a3be66de43fbea1c88
+      created: 1744638427682
+      modified: 1744639297928
+      isPrivate: false
+      sortKey: -1744638427682
+    method: POST
+    body:
+      mimeType: application/x-www-form-urlencoded
+      params:
+        - id: pair_e69059167a444a6e83e1e6af1b55a9d1
+          name: client_secret
+          value: aeb992d5-4be4-4125-857b-6210776321d2
+          disabled: false
+        - id: pair_e0857b0baed0461aa6bf014ba7d3568d
+          name: client_id
+          value: client1
+          disabled: false
+        - id: pair_0f6697a28c404f329fbd7e78c709abbb
+          name: grant_type
+          value: password
+          disabled: false
+        - id: pair_3fc9e64bfc314d1abb2f622aedfcb8e3
+          name: password
+          value: KongRul3z!
+          disabled: false
+        - id: pair_a65f2ca588af485b982a4dc81c7719ae
+          name: username
+          value: demo
+          disabled: false
+    headers:
+      - name: Content-Type
+        value: application/x-www-form-urlencoded
+      - name: User-Agent
+        value: insomnia/11.0.2
+        id: pair_4fdcedb59159426f98d5e10dbcc808d7
+    scripts:
+      afterResponse: |-
+        const jsonBody = insomnia.response.json();
+        insomnia.environment.set("access_token", jsonBody.access_token);
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - name: Introspection
+    meta:
+      id: req_2c941c259151445cbf22209d3a39a8ed
+      created: 1744639333256
+      modified: 1744639357633
+      isPrivate: false
+      sortKey: -1744639333256
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.0.2
+    authentication:
+      type: bearer
+      prefix: "{{ _.access_token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
     id: jar_b3e4e82e6e9bcafd51e371908016c12375fae6f8
     created: 1744637544143
-    modified: 1744637544143
+    modified: 1744639301109
+  cookies:
+    - key: KC_RESTART
+      maxAge: 0
+      domain: keycloak.apim.eu
+      path: /auth/realms/kong/
+      httpOnly: true
+      extensions:
+        - Version=1
+      hostOnly: true
+      creation: 2025-04-14T14:01:40.612Z
+      lastAccessed: 2025-04-14T14:01:40.612Z
+      id: f65c68bc-3002-42b4-a4a7-bbe988f98693
 environments:
   name: Base Environment
   meta:
     id: env_b3e4e82e6e9bcafd51e371908016c12375fae6f8
     created: 1744637544142
-    modified: 1744637544142
+    modified: 1744639301111
     isPrivate: false
+  data:
+    base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
+  subEnvironments:
+    - name: OpenAPI env localhost:3000
+      meta:
+        id: env_b636af090e464c5e84935daac1a471d9
+        created: 1744637828166
+        modified: 1744637828166
+        isPrivate: false
+        sortKey: 1744637828166
+      data:
+        scheme: http
+        host: localhost:3000
+        apikey: apikey
+        bearerToken: bearerToken
 spec:
   contents:
     openapi: 3.0.1
@@ -218,4 +473,54 @@ spec:
   meta:
     id: spc_9a0850c3fcc94b8cb492005ffe725a6b
     created: 1744637544141
-    modified: 1744637573648
+    modified: 1744637819215
+testSuites:
+  - name: New Suite
+    meta:
+      id: uts_e9efeb7119c34d0b8d5cb80b0770ff24
+      created: 1744638243787
+      modified: 1744638243787
+      sortKey: -1744638243787
+    tests:
+      - name: Returns 200
+        meta:
+          id: ut_8aa469392fe942e4802cb2f64e7bad40
+          created: 1744638246177
+          modified: 1744638280377
+          sortKey: -1744638246177
+        code: |
+          const response1 = await insomnia.send();
+          expect(response1.status).to.equal(200);
+          // Parse the response body as JSON
+          const body = JSON.parse(response1.data);
+
+          // Check the response time
+          expect(response1.responseTime).to.be.at.most(2000);
+
+          expect(body).to.be.an('array');
+
+          body.forEach((item) => {
+            expect(item).to.have.property('id');
+          });
+          // Check the existence of specific properties
+      - name: Returns 200
+        meta:
+          id: ut_0da903e07d9c4af29112c5c6ecd9475d
+          created: 1744638277267
+          modified: 1744638302473
+          sortKey: -1744638277268
+        code: |
+          const response1 = await insomnia.send();
+          expect(response1.status).to.equal(200);
+          // Parse the response body as JSON
+          const body = JSON.parse(response1.data);
+
+          // Check the response time
+          expect(response1.responseTime).to.be.at.most(2000);
+
+          expect(body).to.be.an('array');
+
+          body.forEach((item) => {
+            expect(item).to.have.property('id');
+          });
+          // Check the existence of specific properties

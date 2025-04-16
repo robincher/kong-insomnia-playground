@@ -7,27 +7,22 @@ meta:
 collection:
   - name: Transactions
     meta:
-      id: fld_e664c69314c7421abdded55487ad0ab7
-      created: 1744637828167
-      modified: 1744637828167
-      sortKey: -1744637828167
+      id: fld_46bd04495f6c4424b8d19c16cc52111a
+      created: 1744770126202
+      modified: 1744770126202
+      sortKey: -1744770126202
       description: Everything about transactions
     children:
       - url: "{{ _.base_url }}/transactions"
         name: List all transactions
         meta:
-          id: req_887b802137df44e69fec4e8b17e8eea7
-          created: 1744637828167
-          modified: 1744637828167
+          id: req_864e45f9f410469788d3dfc266119fdc
+          created: 1744770126208
+          modified: 1744770126208
           isPrivate: false
           description: Lists all transactions
-          sortKey: -1744637828168
+          sortKey: -1744770126208
         method: GET
-        authentication:
-          type: apikey
-          key: apikey
-          value: "{{ _.apikey }}"
-          addTo: header
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -39,12 +34,12 @@ collection:
       - url: "{{ _.base_url }}/transactions"
         name: Create new transaction
         meta:
-          id: req_39a523234f1d46538a9e6d73bc039972
-          created: 1744637828168
-          modified: 1744637828168
+          id: req_5134b822eab64320acaf23c1f04f1eab
+          created: 1744770126210
+          modified: 1744770126210
           isPrivate: false
           description: Initiate a transaction
-          sortKey: -1744637828168
+          sortKey: -1744770126210
         method: POST
         body:
           mimeType: application/json
@@ -62,11 +57,6 @@ collection:
           - name: Content-Type
             disabled: false
             value: application/json
-        authentication:
-          type: apikey
-          key: apikey
-          value: "{{ _.apikey }}"
-          addTo: header
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -78,18 +68,13 @@ collection:
       - url: "{{ _.base_url }}/transactions/{{ _.id }}"
         name: Get specific transactions
         meta:
-          id: req_28e5841f41484854a35ca8aeaeafd9f3
-          created: 1744637828169
-          modified: 1744637828169
+          id: req_c40da2afd64144e1a89d21388b6283e2
+          created: 1744770126212
+          modified: 1744770126212
           isPrivate: false
           description: Returns a post by id
-          sortKey: -1744637828169
+          sortKey: -1744770126212
         method: GET
-        authentication:
-          type: apikey
-          key: apikey
-          value: "{{ _.apikey }}"
-          addTo: header
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -101,12 +86,12 @@ collection:
       - url: "{{ _.base_url }}/transactions/{{ _.id }}"
         name: Update a transaction
         meta:
-          id: req_96f341014b7e4eabb4e82cb063b8f1b5
-          created: 1744637828169
-          modified: 1744637828169
+          id: req_e280fd88003e440c8849db48248dbb61
+          created: 1744770126215
+          modified: 1744770126215
           isPrivate: false
           description: Change a transaction
-          sortKey: -1744637828169
+          sortKey: -1744770126215
         method: PATCH
         body:
           mimeType: application/json
@@ -124,11 +109,6 @@ collection:
           - name: Content-Type
             disabled: false
             value: application/json
-        authentication:
-          type: apikey
-          key: apikey
-          value: "{{ _.apikey }}"
-          addTo: header
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -140,18 +120,13 @@ collection:
       - url: "{{ _.base_url }}/transactions/{{ _.id }}"
         name: Cancel a transaction
         meta:
-          id: req_d2299f7f7ce2496ab2b33accbfa774e1
-          created: 1744637828170
-          modified: 1744637828170
+          id: req_1e61193638bd447e8dc2eb59fb7c94aa
+          created: 1744770126218
+          modified: 1744770126218
           isPrivate: false
           description: Cancel a transaction
-          sortKey: -1744637828170
+          sortKey: -1744770126218
         method: DELETE
-        authentication:
-          type: apikey
-          key: apikey
-          value: "{{ _.apikey }}"
-          addTo: header
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -172,32 +147,31 @@ collection:
     body:
       mimeType: application/x-www-form-urlencoded
       params:
-        - id: pair_e69059167a444a6e83e1e6af1b55a9d1
-          name: client_secret
+        - name: client_secret
           value: aeb992d5-4be4-4125-857b-6210776321d2
           disabled: false
-        - id: pair_e0857b0baed0461aa6bf014ba7d3568d
-          name: client_id
+          id: pair_e69059167a444a6e83e1e6af1b55a9d1
+        - name: client_id
           value: client1
           disabled: false
-        - id: pair_0f6697a28c404f329fbd7e78c709abbb
-          name: grant_type
+          id: pair_e0857b0baed0461aa6bf014ba7d3568d
+        - name: grant_type
           value: password
           disabled: false
-        - id: pair_3fc9e64bfc314d1abb2f622aedfcb8e3
-          name: password
+          id: pair_0f6697a28c404f329fbd7e78c709abbb
+        - name: password
           value: KongRul3z!
           disabled: false
-        - id: pair_a65f2ca588af485b982a4dc81c7719ae
-          name: username
+          id: pair_3fc9e64bfc314d1abb2f622aedfcb8e3
+        - name: username
           value: demo
           disabled: false
+          id: pair_a65f2ca588af485b982a4dc81c7719ae
     headers:
       - name: Content-Type
         value: application/x-www-form-urlencoded
       - name: User-Agent
         value: insomnia/11.0.2
-        id: pair_4fdcedb59159426f98d5e10dbcc808d7
     scripts:
       afterResponse: |-
         const jsonBody = insomnia.response.json();
@@ -210,11 +184,12 @@ collection:
         send: true
         store: true
       rebuildPath: true
-  - name: Introspection
+  - url: "{{ _['DP:8000'] }}/oidcIntrospection"
+    name: Introspection
     meta:
       id: req_2c941c259151445cbf22209d3a39a8ed
       created: 1744639333256
-      modified: 1744639357633
+      modified: 1744770427559
       isPrivate: false
       sortKey: -1744639333256
     method: GET
@@ -223,7 +198,9 @@ collection:
         value: insomnia/11.0.2
     authentication:
       type: bearer
-      prefix: "{{ _.access_token }}"
+      prefix: Bearer
+      token: "{{ _.access_token }}"
+      disabled: false
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -237,7 +214,7 @@ cookieJar:
   meta:
     id: jar_b3e4e82e6e9bcafd51e371908016c12375fae6f8
     created: 1744637544143
-    modified: 1744639301109
+    modified: 1744770376921
   cookies:
     - key: KC_RESTART
       maxAge: 0
@@ -248,17 +225,27 @@ cookieJar:
         - Version=1
       hostOnly: true
       creation: 2025-04-14T14:01:40.612Z
-      lastAccessed: 2025-04-14T14:01:40.612Z
-      id: f65c68bc-3002-42b4-a4a7-bbe988f98693
+      lastAccessed: 2025-04-16T02:26:16.910Z
+      id: ef5b5f20-cf4e-4cc6-9eb2-df93247c2cc8
+    - id: 43c43492-95cd-48e1-9064-af14d22d5d25
+      key: KC_RESTART
+      domain: keycloak.apim.eu
+      path: /auth/realms/kong/
+      secure: false
+      httpOnly: true
+      creation: 2025-04-14T14:01:40.612Z
+      hostOnly: true
+      lastAccessed: 2025-04-16T02:24:33.410Z
 environments:
   name: Base Environment
   meta:
     id: env_b3e4e82e6e9bcafd51e371908016c12375fae6f8
     created: 1744637544142
-    modified: 1744639301111
+    modified: 1744770506418
     isPrivate: false
   data:
     base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
+    access_token: eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwbWVEV1VXbXZtcWg4cGNiQVgzUkxyMV9FSW9rQWV5cFA2dFN0M3Z5YXUwIn0.eyJqdGkiOiJkNmNmMTliMy03OWQ4LTRkZmEtOWI5ZS0wNTgyYTAwY2ZmYWUiLCJleHAiOjE3NDQ3NzA2NzYsIm5iZiI6MCwiaWF0IjoxNzQ0NzcwMzc2LCJpc3MiOiJodHRwczovL2tleWNsb2FrLmFwaW0uZXUvYXV0aC9yZWFsbXMva29uZyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI1NjQ0MzgxYy0zN2MyLTRkMmUtODg3OS1mYmUzZjFkOWE4N2UiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjbGllbnQxIiwiYXV0aF90aW1lIjowLCJzZXNzaW9uX3N0YXRlIjoiYjY5NDdkYzktYTdhMC00YzJjLTk0MmMtZjBiMmNjMzQ2MDFkIiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJrb25nX3JvbGUiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGtvbmdfYXBpX2FjY2VzcyBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJyb2xlcyI6WyJrb25nX3JvbGUiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl0sIm5hbWUiOiJLb25nIERlbW8iLCJncm91cHMiOlsia29uZ2VycyJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJkZW1vIiwiZ2l2ZW5fbmFtZSI6IktvbmciLCJmYW1pbHlfbmFtZSI6IkRlbW8iLCJlbWFpbCI6ImRlbW9AYXBpbS5ldSJ9.A2toJS8kFHk0S4kkeMeEfAsTXzLR_kNX_DrN5LHWeZALxXVcmtVf1PWlLR1atET1tqcOYKqg_KSMa55r1OrTDD_CaOwYiTuQAidHcavGyqsM5u9Dfmtxd_Rofwpi8Hni3iKheLa-et411TTk2X6ksNLJCRUmhejycGBJtyOdSmCYWzcrqlBjK8WBaCUKe7sfMJOuBhkseaLnGjybSyVRMXapwjCg39h-ycN6E7pH6LgSFoPOrNXzj4vy55KLvcT00lYXo7aC6BXkdI2QSi8BRLqhTNxuOBQATVU4tCUeXAPNVwXN5lsQKft13om3JtIqks0LOzmxgeGM4gHjWFDl1A
   subEnvironments:
     - name: OpenAPI env localhost:3000
       meta:
@@ -267,6 +254,18 @@ environments:
         modified: 1744637828166
         isPrivate: false
         sortKey: 1744637828166
+      data:
+        scheme: http
+        host: localhost:3000
+        apikey: apikey
+        bearerToken: bearerToken
+    - name: OpenAPI env localhost:3000
+      meta:
+        id: env_8e173a2956274f3d974cfb357f1a808b
+        created: 1744770126200
+        modified: 1744770126200
+        isPrivate: false
+        sortKey: 1744770126200
       data:
         scheme: http
         host: localhost:3000
@@ -473,7 +472,7 @@ spec:
   meta:
     id: spc_9a0850c3fcc94b8cb492005ffe725a6b
     created: 1744637544141
-    modified: 1744637819215
+    modified: 1744769985760
 testSuites:
   - name: New Suite
     meta:
@@ -507,8 +506,9 @@ testSuites:
         meta:
           id: ut_0da903e07d9c4af29112c5c6ecd9475d
           created: 1744638277267
-          modified: 1744638302473
+          modified: 1744770271068
           sortKey: -1744638277268
+        requestId: req_8d334605528b42a3be66de43fbea1c88
         code: |
           const response1 = await insomnia.send();
           expect(response1.status).to.equal(200);

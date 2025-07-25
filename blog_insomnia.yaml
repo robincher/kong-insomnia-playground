@@ -1,0 +1,280 @@
+type: spec.insomnia.rest/5.0
+name: BlogService
+meta:
+  id: wrk_9beeb1a9057e462f96283c61133260e5
+  created: 1742334359640
+  modified: 1742334359640
+  description: ""
+collection:
+  - name: blog
+    meta:
+      id: fld_d0578c51577f4f8ea0c68f1e4adf7a28
+      created: 1742334562012
+      modified: 1742334562012
+      sortKey: -1742334562012
+      description: ""
+    children:
+      - url: "{{ _.proxy_url }}/blogs"
+        name: Get blogs
+        meta:
+          id: req_36c2a1276acb4ac08097410d837445af
+          created: 1742334562013
+          modified: 1753307552629
+          isPrivate: false
+          description: This API gets all blogs
+          sortKey: -1742334562114
+        method: GET
+        authentication:
+          type: basic
+          useISO88591: false
+          username: "{{ _.client_id }}"
+          password: "{{ _.client_secret }}"
+        scripts:
+          preRequest: ""
+          afterResponse: ""
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.proxy_url }}/blogs"
+        name: Add a blog
+        meta:
+          id: req_4b700809bd214ceabdfed64e347022f9
+          created: 1742334562013
+          modified: 1753307477192
+          isPrivate: false
+          description: This API adds a blog service
+          sortKey: -1742334562013
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"text": "A joyful gorilla embraces the day."
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: basic
+          useISO88591: false
+          username: "{{ _.client_id }}"
+          password: "{{ _.client_secret }}"
+        scripts:
+          preRequest: ""
+          afterResponse: ""
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.proxy_url }}/blogs/{% response 'body',
+          'req_36c2a1276acb4ac08097410d837445af',
+          'b64::JC5bMF0uYmxvZ19pZA==::46b', 'never', 60 %}"
+        name: Get a blog by id
+        meta:
+          id: req_da339ad75a204bcea1073d7041fb81aa
+          created: 1742334562014
+          modified: 1753305576809
+          isPrivate: false
+          description: This API gets a blog by ID
+          sortKey: -1742334562014
+        method: GET
+        authentication:
+          type: basic
+          useISO88591: false
+          username: "{{ _.client_id }}"
+          password: "{{ _.client_secret }}"
+        scripts:
+          preRequest: ""
+          afterResponse: ""
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_d8bc7f4ffb56652a9554fb19043a5e448cdb9a2d
+    created: 1742334359647
+    modified: 1742334359647
+environments:
+  name: Base Environment
+  meta:
+    id: env_d8bc7f4ffb56652a9554fb19043a5e448cdb9a2d
+    created: 1742334359646
+    modified: 1753307491692
+    isPrivate: false
+  data:
+    proxy_url: http://proxy-<username>-<random_id>.kong-sales-engineering.com
+    base_path: /blogs
+  subEnvironments:
+    - name: Development
+      meta:
+        id: env_cd8abadd6dc846ff9fa07217474014dc
+        created: 1742334590767
+        modified: 1749434853883
+        isPrivate: false
+        sortKey: 1742334590767
+      data:
+        client_id: ""
+        client_secret: ""
+spec:
+  contents:
+    openapi: 3.1.0
+    info:
+      version: 2.3.1
+      title: Blog API
+      license:
+        name: Apache 2.0
+      description: Blog Service APIs
+      contact:
+        name: Kong-dev
+    servers:
+      - url: http://blog-service.se-kong-mesh.svc:3000
+    paths:
+      /blogs:
+        post:
+          operationId: addBlog
+          summary: Add a blog
+          description: This API adds a blog service
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    text:
+                      type: string
+                      description: Content of the blog
+                  required:
+                    - text
+                  example:
+                    text: A joyful gorilla.
+          responses:
+            "200":
+              description: Blog
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Blog"
+                  example:
+                    blog_id: 5
+                    text: A joyful gorilla.
+                    sentiment_score: 1
+                    created_on: 2025-07-23T00:00:00.000Z
+          tags:
+            - blog
+        get:
+          operationId: getBlogs
+          summary: Get blogs
+          description: This API gets all blogs
+          responses:
+            "200":
+              description: Blog
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Blog"
+                  example:
+                    - blog_id: 5
+                      text: A joyful gorilla.
+                      sentiment_score: 1
+                      created_on: 2025-07-23T00:00:00.000Z
+          tags:
+            - blog
+      /blogs/{id}:
+        get:
+          operationId: getBlogById
+          summary: Get a blog by id
+          description: This API gets a blog by ID
+          parameters:
+            - name: id
+              in: path
+              description: ID of blog to use
+              required: true
+              schema:
+                type: string
+              style: simple
+          responses:
+            "200":
+              description: Blog
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Blog"
+                  example:
+                    blog_id: 5
+                    text: A joyful gorilla.
+                    sentiment_score: 1
+                    created_on: 2025-07-23T00:00:00.000Z
+          tags:
+            - blog
+    tags:
+      - name: blog
+    components:
+      securitySchemes:
+        basicAuth:
+          type: http
+          scheme: basic
+      schemas:
+        Blog:
+          type: object
+          properties:
+            blog_id:
+              type: integer
+              description: Unique identifier for the blog
+            text:
+              type: string
+              description: Content of the blog
+            sentiment_score:
+              type: integer
+              description: Sentiment score of the blog
+            created_on:
+              type: string
+              format: date-time
+              description: Date and time when the blog was created
+          example:
+            blog_id: 5
+            text: A joyful gorilla.
+            sentiment_score: 1
+            created_on: 2025-07-23T00:00:00.000Z
+  meta:
+    id: spc_3581f6b28aa4445d9b7a0edaf9c72b05
+    created: 1742334359645
+    modified: 1753306915383
+testSuites:
+  - name: Authentication
+    meta:
+      id: uts_7b69a047d0354575aaed6d3332198663
+      created: 1742348254362
+      modified: 1742348263029
+      sortKey: -1742348254362
+    tests:
+      - name: Returns 401
+        meta:
+          id: ut_5b1ea999896e4220a4623355f4057601
+          created: 1742348264139
+          modified: 1742348274925
+          sortKey: -1742348264139
+        requestId: req_36c2a1276acb4ac08097410d837445af
+        code: |-
+          const response1 = await insomnia.send();
+          expect(response1.status).to.equal(401);

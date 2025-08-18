@@ -1,6 +1,14 @@
 extends: "spectral:oas"
 
 rules:
+  cicd-demo-tags-need-description:
+    description: all tags must have a description
+    given: $.tags[*]
+    severity: error
+    then:
+      field: description
+      function: truthy
+      
   operation-id-camelcase:
     description: "Operation IDs should follow camelCase naming convention."
     given: "$.paths[*][*].operationId"

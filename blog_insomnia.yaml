@@ -30,6 +30,9 @@ collection:
           key: apikey
           value: "{{ _.apikey }}"
           addTo: header
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -62,13 +65,15 @@ collection:
             }
         headers:
           - name: Content-Type
-            disabled: false
             value: application/json
         authentication:
           type: apikey
           key: apikey
           value: "{{ _.apikey }}"
           addTo: header
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -92,6 +97,9 @@ collection:
           key: apikey
           value: "{{ _.apikey }}"
           addTo: header
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -124,13 +132,15 @@ collection:
             }
         headers:
           - name: Content-Type
-            disabled: false
             value: application/json
         authentication:
           type: apikey
           key: apikey
           value: "{{ _.apikey }}"
           addTo: header
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -154,6 +164,9 @@ collection:
           key: apikey
           value: "{{ _.apikey }}"
           addTo: header
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -162,12 +175,15 @@ collection:
             send: true
             store: true
           rebuildPath: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
   - url: "{{ _['DP:8000'] }}/oidcIntrospection"
     name: "Introspection "
     meta:
       id: req_65937da0cc8e43fc88195d076903a035
       created: 1753427826639
-      modified: 1753428314062
+      modified: 1755488808941
       isPrivate: false
       description: ""
       sortKey: -1753427826639
@@ -178,6 +194,9 @@ collection:
     authentication:
       type: bearer
       token: "{{ _.access_token }}"
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -199,39 +218,38 @@ collection:
     body:
       mimeType: application/x-www-form-urlencoded
       params:
-        - id: pair_8ea7e8e3b2c24e628c6d3a7008158a7d
-          name: client_secret
+        - name: client_secret
           value: aeb992d5-4be4-4125-857b-6210776321d2
           description: ""
           disabled: false
-        - id: pair_72f5a8d1abaf488c989e9e4cd353caee
-          name: grant_type
+          id: pair_8ea7e8e3b2c24e628c6d3a7008158a7d
+        - name: grant_type
           value: password
           description: ""
           disabled: false
-        - id: pair_2b0f1b9b50524e9b94f30118243dc1b4
-          name: client_id
+          id: pair_72f5a8d1abaf488c989e9e4cd353caee
+        - name: client_id
           value: client1
           description: ""
           disabled: false
-        - id: pair_137e62e89b044575958fc8862050ff23
-          name: password
+          id: pair_2b0f1b9b50524e9b94f30118243dc1b4
+        - name: password
           value: KongRul3z!
           description: ""
           disabled: false
-        - id: pair_40d8aea3cdd54a62b27d423c937f60d5
-          name: username
+          id: pair_137e62e89b044575958fc8862050ff23
+        - name: username
           value: demo
           description: ""
           disabled: false
+          id: pair_40d8aea3cdd54a62b27d423c937f60d5
     headers:
       - name: Content-Type
         value: application/x-www-form-urlencoded
-        id: pair_2246523bb7b04ba29e8b109b694987af
       - name: User-Agent
         value: insomnia/11.3.0
-        id: pair_30b81397e29a46428c6e4d0d104cbc98
     scripts:
+      preRequest: ""
       afterResponse: |-
         const jsonBody = insomnia.response.json();
         insomnia.environment.set("access_token", jsonBody.access_token);
@@ -250,17 +268,16 @@ cookieJar:
     created: 1753427685807
     modified: 1753428244273
   cookies:
-    - key: KC_RESTART
-      maxAge: 0
+    - id: 7ef7cc71-58a0-4fdd-a943-91a3ebe7b9dc
+      key: KC_RESTART
+      value: ""
       domain: keycloak.apim.eu
       path: /auth/realms/kong/
+      secure: false
       httpOnly: true
       extensions:
         - Version=1
       hostOnly: true
-      creation: 2025-07-25T07:24:04.238Z
-      lastAccessed: 2025-07-25T07:24:04.238Z
-      id: 7ef7cc71-58a0-4fdd-a943-91a3ebe7b9dc
 environments:
   name: Base Environment
   meta:
@@ -486,7 +503,7 @@ spec:
   meta:
     id: spc_1331b1e403b5400a83ad8e2173148fe4
     created: 1730958500462
-    modified: 1755488254564
+    modified: 1755488837158
 testSuites:
   - name: New Suite
     meta:

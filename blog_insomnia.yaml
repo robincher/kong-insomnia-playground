@@ -1,37 +1,35 @@
 type: spec.insomnia.rest/5.0
-name: BlogService
+name: Kong-Insomnia-PlayGround
 meta:
-  id: wrk_9beeb1a9057e462f96283c61133260e5
-  created: 1742334359640
-  modified: 1742334359640
-  description: ""
+  id: wrk_03837bb6835248c580142b800330c851
+  created: 1730958463799
+  modified: 1755488254565
+  description: Insomnia Workspace for
+    https://github.com/robincher/kong-insomnia-playground.git
 collection:
-  - name: blog
+  - name: Transactions
     meta:
-      id: fld_d0578c51577f4f8ea0c68f1e4adf7a28
-      created: 1742334562012
-      modified: 1742334562012
-      sortKey: -1742334562012
-      description: ""
+      id: fld_0e80579e4264462ba5c6683c055eaefd
+      created: 1730958511889
+      modified: 1730958511889
+      sortKey: -1730958511889
+      description: Everything about transactions
     children:
-      - url: "{{ _.proxy_url }}/blogs"
-        name: Get blogs
+      - url: "{{ _.base_url }}/transactions"
+        name: List all transactions
         meta:
-          id: req_36c2a1276acb4ac08097410d837445af
-          created: 1742334562013
-          modified: 1753307552629
+          id: req_699a711aa1274c06b42669a10500b2eb
+          created: 1730958511889
+          modified: 1730958801260
           isPrivate: false
-          description: This API gets all blogs
-          sortKey: -1742334562114
+          description: ""
+          sortKey: -1730958511889
         method: GET
         authentication:
-          type: basic
-          useISO88591: false
-          username: "{{ _.client_id }}"
-          password: "{{ _.client_secret }}"
-        scripts:
-          preRequest: ""
-          afterResponse: ""
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -40,33 +38,37 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _.proxy_url }}/blogs"
-        name: Add a blog
+      - url: "{{ _.base_url }}/transactions"
+        name: Create new transaction
         meta:
-          id: req_4b700809bd214ceabdfed64e347022f9
-          created: 1742334562013
-          modified: 1753307477192
+          id: req_28ffd4f3c5c54bc6bb29fcc97cb17660
+          created: 1730958511890
+          modified: 1730958511890
           isPrivate: false
-          description: This API adds a blog service
-          sortKey: -1742334562013
+          description: ""
+          sortKey: -1730958511890
         method: POST
         body:
           mimeType: application/json
           text: |-
             {
-            	"text": "A joyful gorilla embraces the day."
+              "id": 42,
+              "source": "GR872659435350353",
+              "senderName": "Max Mustermann",
+              "destination": "DE8412325587359375895",
+              "amount": 42,
+              "currency": "EUR",
+              "subject": "Invoice #42-08/15"
             }
         headers:
           - name: Content-Type
+            disabled: false
             value: application/json
         authentication:
-          type: basic
-          useISO88591: false
-          username: "{{ _.client_id }}"
-          password: "{{ _.client_secret }}"
-        scripts:
-          preRequest: ""
-          afterResponse: ""
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -75,26 +77,21 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: "{{ _.proxy_url }}/blogs/{% response 'body',
-          'req_36c2a1276acb4ac08097410d837445af',
-          'b64::JC5bMF0uYmxvZ19pZA==::46b', 'never', 60 %}"
-        name: Get a blog by id
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Get specific transactions
         meta:
-          id: req_da339ad75a204bcea1073d7041fb81aa
-          created: 1742334562014
-          modified: 1753305576809
+          id: req_33266309cf76483696bed7a7f4c36d4a
+          created: 1730958511890
+          modified: 1730958511890
           isPrivate: false
-          description: This API gets a blog by ID
-          sortKey: -1742334562014
+          description: ""
+          sortKey: -1730958511890
         method: GET
         authentication:
-          type: basic
-          useISO88591: false
-          username: "{{ _.client_id }}"
-          password: "{{ _.client_secret }}"
-        scripts:
-          preRequest: ""
-          afterResponse: ""
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -103,178 +100,420 @@ collection:
             send: true
             store: true
           rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Update a transaction
+        meta:
+          id: req_58ceed56154e49a09631271c78c06c6a
+          created: 1730958511890
+          modified: 1730958511890
+          isPrivate: false
+          description: ""
+          sortKey: -1730958511890
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "id": 42,
+              "source": "GR872659435350353",
+              "senderName": "Max Mustermann",
+              "destination": "DE8412325587359375895",
+              "amount": 42,
+              "currency": "EUR",
+              "subject": "Invoice #42-08/15"
+            }
+        headers:
+          - name: Content-Type
+            disabled: false
+            value: application/json
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Cancel a transaction
+        meta:
+          id: req_64dec9afb77940e5a1348c8f17324f85
+          created: 1730958511890
+          modified: 1730958511890
+          isPrivate: false
+          description: ""
+          sortKey: -1730958511890
+        method: DELETE
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - url: "{{ _['DP:8000'] }}/oidcIntrospection"
+    name: "Introspection "
+    meta:
+      id: req_65937da0cc8e43fc88195d076903a035
+      created: 1753427826639
+      modified: 1753428314062
+      isPrivate: false
+      description: ""
+      sortKey: -1753427826639
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    authentication:
+      type: bearer
+      token: "{{ _.access_token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: " https://keycloak.apim.eu/auth/realms/kong/protocol/openid-connect/token"
+    name: Get OAuth Token
+    meta:
+      id: req_93a911c80b774d43958c8c031c61cff3
+      created: 1753427955244
+      modified: 1753428242559
+      isPrivate: false
+      description: ""
+      sortKey: -1753427955244
+    method: POST
+    body:
+      mimeType: application/x-www-form-urlencoded
+      params:
+        - id: pair_8ea7e8e3b2c24e628c6d3a7008158a7d
+          name: client_secret
+          value: aeb992d5-4be4-4125-857b-6210776321d2
+          description: ""
+          disabled: false
+        - id: pair_72f5a8d1abaf488c989e9e4cd353caee
+          name: grant_type
+          value: password
+          description: ""
+          disabled: false
+        - id: pair_2b0f1b9b50524e9b94f30118243dc1b4
+          name: client_id
+          value: client1
+          description: ""
+          disabled: false
+        - id: pair_137e62e89b044575958fc8862050ff23
+          name: password
+          value: KongRul3z!
+          description: ""
+          disabled: false
+        - id: pair_40d8aea3cdd54a62b27d423c937f60d5
+          name: username
+          value: demo
+          description: ""
+          disabled: false
+    headers:
+      - name: Content-Type
+        value: application/x-www-form-urlencoded
+        id: pair_2246523bb7b04ba29e8b109b694987af
+      - name: User-Agent
+        value: insomnia/11.3.0
+        id: pair_30b81397e29a46428c6e4d0d104cbc98
     scripts:
-      afterResponse: ""
-      preRequest: ""
+      afterResponse: |-
+        const jsonBody = insomnia.response.json();
+        insomnia.environment.set("access_token", jsonBody.access_token);
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_d8bc7f4ffb56652a9554fb19043a5e448cdb9a2d
-    created: 1742334359647
-    modified: 1742334359647
+    id: jar_eeffcb9184b1ab85e651a6e3be6fee9c32521ebe
+    created: 1753427685807
+    modified: 1753428244273
+  cookies:
+    - key: KC_RESTART
+      maxAge: 0
+      domain: keycloak.apim.eu
+      path: /auth/realms/kong/
+      httpOnly: true
+      extensions:
+        - Version=1
+      hostOnly: true
+      creation: 2025-07-25T07:24:04.238Z
+      lastAccessed: 2025-07-25T07:24:04.238Z
+      id: 7ef7cc71-58a0-4fdd-a943-91a3ebe7b9dc
 environments:
   name: Base Environment
   meta:
-    id: env_d8bc7f4ffb56652a9554fb19043a5e448cdb9a2d
-    created: 1742334359646
-    modified: 1753307491692
+    id: env_eeffcb9184b1ab85e651a6e3be6fee9c32521ebe
+    created: 1730958463822
+    modified: 1753428244276
     isPrivate: false
-  data:
-    proxy_url: http://proxy-<username>-<random_id>.kong-sales-engineering.com
-    base_path: /blogs
   subEnvironments:
-    - name: Development
+    - name: OpenAPI env localhost:3000
       meta:
-        id: env_cd8abadd6dc846ff9fa07217474014dc
-        created: 1742334590767
-        modified: 1749434853883
+        id: env_038c957f9f1749c8bc57927d9655f4b4
+        created: 1730958511888
+        modified: 1730958794085
         isPrivate: false
-        sortKey: 1742334590767
+        sortKey: 1730958511888
       data:
-        client_id: ""
-        client_secret: ""
+        scheme: http
+        base_path: ""
+        host: localhost:3000
+        apikey: apikey
+        bearerToken: bearerToken
+        base_url: "{{ _.host }}"
+        id: b88f7029-fa93-41a5-9462-4884e544bf63
 spec:
   contents:
-    openapi: 3.1.0
+    openapi: 3.0.1
     info:
-      version: 2.3.1
-      title: Blog API
-      license:
-        name: Apache 2.0
-      description: Blog Service APIs
+      version: 1.1.0
+      title: Transactions API of BanKonG
+      description: >
+        This API provides you access to the transactions of a logged in user.
+        You can get, create, change and delete transactions (of course always
+        depending on permissions).
+
+
+        :closed_lock_with_key: this api is protected by either OpenID Connect or
+        api-key
+
+
+        :bulb: this API is rate limited
       contact:
-        name: Kong-dev
+        name: BanKong PointOfContact
+        url: http://www.bankong.com/support
+        email: support@bankong.com
     servers:
-      - url: http://blog-service.se-kong-mesh.svc:3000
+      - url: http://localhost:3000
+        description: local sandbox environment
+    tags:
+      - name: Transactions
+        description: Everything about transactions
+        externalDocs:
+          url: http://docs.bankong.com/transations
     paths:
-      /blogs:
+      /transactions:
+        get:
+          description: Lists all transactions
+          summary: List all transactions
+          tags:
+            - Transactions
+          operationId: listTranactions
+          responses:
+            "200":
+              description: List of transactions
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/TransactionsList"
         post:
-          operationId: addBlog
-          summary: Add a blog
-          description: This API adds a blog service
+          description: Initiate a transaction
+          summary: Create nw transaction
+          tags:
+            - Transactions
+          operationId: initiateTransaction
           requestBody:
-            required: true
             content:
-              application/json:
+              application/json; charset=utf-8:
                 schema:
-                  type: object
-                  properties:
-                    text:
-                      type: string
-                      description: Content of the blog
-                  required:
-                    - text
-                  example:
-                    text: A joyful gorilla.
+                  $ref: "#/components/schemas/Transaction"
           responses:
             "200":
-              description: Blog
+              description: initiated transaction
               content:
                 application/json:
                   schema:
-                    $ref: "#/components/schemas/Blog"
-                  example:
-                    blog_id: 5
-                    text: A joyful gorilla.
-                    sentiment_score: 1
-                    created_on: 2025-07-23T00:00:00.000Z
-          tags:
-            - blog
+                    $ref: "#/components/schemas/Transaction"
+      /transactions/{id}:
         get:
-          operationId: getBlogs
-          summary: Get blogs
-          description: This API gets all blogs
-          responses:
-            "200":
-              description: Blog
-              content:
-                application/json:
-                  schema:
-                    type: array
-                    items:
-                      $ref: "#/components/schemas/Blog"
-                  example:
-                    - blog_id: 5
-                      text: A joyful gorilla.
-                      sentiment_score: 1
-                      created_on: 2025-07-23T00:00:00.000Z
+          description: Returns a post by id
+          summary: Get specific transactions
           tags:
-            - blog
-      /blogs/{id}:
-        get:
-          operationId: getBlogById
-          summary: Get a blog by id
-          description: This API gets a blog by ID
+            - Transactions
+          operationId: getTransaction
           parameters:
             - name: id
               in: path
-              description: ID of blog to use
               required: true
+              description: The transaction id.
               schema:
-                type: string
-              style: simple
+                $ref: "#/components/schemas/TransactionId"
           responses:
             "200":
-              description: Blog
+              description: Transaction received
               content:
                 application/json:
                   schema:
-                    $ref: "#/components/schemas/Blog"
-                  example:
-                    blog_id: 5
-                    text: A joyful gorilla.
-                    sentiment_score: 1
-                    created_on: 2025-07-23T00:00:00.000Z
+                    $ref: "#/components/schemas/Transaction"
+            "404":
+              description: Transaction not found
+        patch:
+          description: Change a transaction
+          summary: Update a transaction
           tags:
-            - blog
-    tags:
-      - name: blog
+            - Transactions
+          operationId: changeTransaction
+          requestBody:
+            content:
+              application/json; charset=utf-8:
+                schema:
+                  $ref: "#/components/schemas/Transaction"
+          parameters:
+            - name: id
+              in: path
+              required: true
+              description: The transaction id.
+              schema:
+                $ref: "#/components/schemas/TransactionId"
+          responses:
+            "200":
+              description: Transaction changed
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Transaction"
+            "404":
+              description: Transaction not found
+        delete:
+          description: Cancel a transaction
+          summary: Cancel a transaction
+          tags:
+            - Transactions
+          operationId: cancelTransaction
+          parameters:
+            - name: id
+              in: path
+              required: true
+              description: The transaction id.
+              schema:
+                $ref: "#/components/schemas/TransactionId"
+          responses:
+            "200":
+              description: Transaction cancelled
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Transaction"
+            "404":
+              description: Transaction not found
     components:
-      securitySchemes:
-        basicAuth:
-          type: http
-          scheme: basic
       schemas:
-        Blog:
+        TransactionId:
+          type: integer
+          description: Unique identifier for the transaction. This identifier is both
+            unique and immutable.
+          example: 42
+        TransactionsList:
+          type: array
+          items:
+            $ref: "#/components/schemas/Transaction"
+        Transaction:
           type: object
+          required:
+            - id
+            - source
+            - senderName
+            - destination
+            - amount
+            - currency
+            - subject
           properties:
-            blog_id:
-              type: integer
-              description: Unique identifier for the blog
-            text:
+            id:
+              $ref: "#/components/schemas/TransactionId"
+            source:
               type: string
-              description: Content of the blog
-            sentiment_score:
-              type: integer
-              description: Sentiment score of the blog
-            created_on:
+              description: The IBAN of the sending account
+              pattern: ^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}$
+              example: GR872659435350353
+            senderName:
               type: string
-              format: date-time
-              description: Date and time when the blog was created
-          example:
-            blog_id: 5
-            text: A joyful gorilla.
-            sentiment_score: 1
-            created_on: 2025-07-23T00:00:00.000Z
+              example: Max Mustermann
+            destination:
+              type: string
+              description: The IBAN of the receiving account
+              pattern: ^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}$
+              example: DE8412325587359375895
+            amount:
+              description: The amount of the transaction. Cannot be negative
+              type: number
+              minimum: 0.01
+              multipleOf: 0.01
+              example: 42
+            currency:
+              description: A code allocated to a currency by a Maintenance Agency under an
+                international identification scheme, as described in the latest
+                edition of the international standard ISO 4217
+              type: string
+              pattern: ^[A-Z]{3,3}$
+              example: EUR
+            subject:
+              type: string
+              description: Description that may be available for the statement fee.
+              minLength: 0
+              maxLength: 128
+              example: "Invoice #42-08/15"
+      securitySchemes:
+        ApiKeyAuth:
+          type: apiKey
+          in: header
+          name: apikey
+        OIDC:
+          type: http
+          scheme: bearer
+          bearerFormat: JWT
   meta:
-    id: spc_3581f6b28aa4445d9b7a0edaf9c72b05
-    created: 1742334359645
-    modified: 1753306915383
+    id: spc_1331b1e403b5400a83ad8e2173148fe4
+    created: 1730958500462
+    modified: 1755488254564
 testSuites:
-  - name: Authentication
+  - name: New Suite
     meta:
-      id: uts_7b69a047d0354575aaed6d3332198663
-      created: 1742348254362
-      modified: 1742348263029
-      sortKey: -1742348254362
+      id: uts_7eb220b290744c2e95c1c9565999d780
+      created: 1730958514817
+      modified: 1730958514817
+      sortKey: -1730958514817
     tests:
-      - name: Returns 401
+      - name: Returns 200
         meta:
-          id: ut_5b1ea999896e4220a4623355f4057601
-          created: 1742348264139
-          modified: 1742348274925
-          sortKey: -1742348264139
-        requestId: req_36c2a1276acb4ac08097410d837445af
-        code: |-
+          id: ut_4be0643defd24d1cbf9b08d1fd9d6d5c
+          created: 1730958517159
+          modified: 1730958543814
+          sortKey: -1730958517159
+        requestId: req_699a711aa1274c06b42669a10500b2eb
+        code: |
           const response1 = await insomnia.send();
-          expect(response1.status).to.equal(401);
+          expect(response1.status).to.equal(200);
+          // Parse the response body as JSON
+          const body = JSON.parse(response1.data);
+
+          // Check the response time
+          expect(response1.responseTime).to.be.at.most(2000);
+
+          expect(body).to.be.an('array');
+
+          body.forEach((item) => {
+            expect(item).to.have.property('id');
+          });
+          // Check the existence of specific properties

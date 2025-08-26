@@ -30,9 +30,6 @@ collection:
           key: apikey
           value: "{{ _.apikey }}"
           addTo: header
-        scripts:
-          preRequest: ""
-          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -71,9 +68,6 @@ collection:
           key: apikey
           value: "{{ _.apikey }}"
           addTo: header
-        scripts:
-          preRequest: ""
-          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -97,9 +91,6 @@ collection:
           key: apikey
           value: "{{ _.apikey }}"
           addTo: header
-        scripts:
-          preRequest: ""
-          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -138,9 +129,6 @@ collection:
           key: apikey
           value: "{{ _.apikey }}"
           addTo: header
-        scripts:
-          preRequest: ""
-          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -164,9 +152,6 @@ collection:
           key: apikey
           value: "{{ _.apikey }}"
           addTo: header
-        scripts:
-          preRequest: ""
-          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -175,9 +160,6 @@ collection:
             send: true
             store: true
           rebuildPath: true
-    scripts:
-      afterResponse: ""
-      preRequest: ""
   - url: "{{ _['DP:8000'] }}/oidcIntrospection"
     name: "Introspection "
     meta:
@@ -194,9 +176,6 @@ collection:
     authentication:
       type: bearer
       token: "{{ _.access_token }}"
-    scripts:
-      preRequest: ""
-      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -249,7 +228,6 @@ collection:
       - name: User-Agent
         value: insomnia/11.3.0
     scripts:
-      preRequest: ""
       afterResponse: |-
         const jsonBody = insomnia.response.json();
         insomnia.environment.set("access_token", jsonBody.access_token);

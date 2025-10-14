@@ -295,7 +295,7 @@ spec:
         Connect or api-key
 
 
-        :bulb: this API is rate limited
+        :bulb: this API is rate limited to prevent abuse
       contact:
         name: BanKong PointOfContact
         url: http://www.bankong.com/support
@@ -481,7 +481,7 @@ spec:
   meta:
     id: spc_1331b1e403b5400a83ad8e2173148fe4
     created: 1730958500462
-    modified: 1760409505890
+    modified: 1760410023497
 testSuites:
   - name: New Suite
     meta:

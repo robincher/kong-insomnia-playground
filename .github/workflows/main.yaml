@@ -31,7 +31,7 @@ jobs:
       if: steps.cache-inso.outputs.cache-hit != 'true'
       run: |
         mkdir -p /tmp/inso
-        curl -sL https://github.com/Kong/insomnia/releases/download/core%4011.6.1/inso-linux-x64-11.6.1.tar.xz -o inso.tar.xz
+        curl -sL https://github.com/Kong/insomnia/releases/download/core%4011.5.0/inso-linux-x64-11.5.0.tar.xz -o inso.tar.xz
         tar -xf inso.tar.xz -C /tmp/inso
         chmod +x /tmp/inso/inso
     - name: LINT AND EXPORT SPEC
@@ -134,11 +134,9 @@ jobs:
         deck file patch -s kong.yaml -o kong.yaml --selector "$..services[*]" --value 'host:"blog-service.'$DEMO_NAMESPACE'.svc"'
 
         # Add plugins to the generated configuration
-        # deck file add-plugins -s kong.yaml -o kong.yaml --config "$KONG_OIDC_CONF" --selector "$.services[*]"
         deck file add-plugins -s kong.yaml -o kong.yaml ./deck/plugins/*
       env:
         DEMO_NAMESPACE: ${{ secrets.DEMO_NAMESPACE }}
-        # KONG_OIDC_CONF: ${{ secrets.KONG_OIDC_PLUGIN }}
     - name: Upload Kong config
       uses: actions/upload-artifact@v4
       with:

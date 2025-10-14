@@ -41,7 +41,7 @@ jobs:
         export PATH="/tmp/inso:$PATH"
         
         # Lint and export in one step
-        inso lint spec --ci -w blog_insomnia.yaml Blog
+        inso --ci lint spec -w blog_insomnia.yaml Blog
         inso --ci -w blog_insomnia.yaml export spec Blog > blog.yaml
     - name: Upload blog spec
       uses: actions/upload-artifact@v4

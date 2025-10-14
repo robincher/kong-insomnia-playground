@@ -7,6 +7,85 @@ meta:
   description: Insomnia Workspace for
     https://github.com/robincher/kong-insomnia-playground.git
 collection:
+  - url: "{{ _['DP:8000'] }}/oidcIntrospection"
+    name: "Introspection "
+    meta:
+      id: req_65937da0cc8e43fc88195d076903a035
+      created: 1753427826639
+      modified: 1755488808941
+      isPrivate: false
+      description: ""
+      sortKey: -1753427826639
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.3.0
+    authentication:
+      type: bearer
+      token: "{{ _.access_token }}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: " https://keycloak.apim.eu/auth/realms/kong/protocol/openid-connect/token"
+    name: Get OAuth Token
+    meta:
+      id: req_93a911c80b774d43958c8c031c61cff3
+      created: 1753427955244
+      modified: 1753428242559
+      isPrivate: false
+      description: ""
+      sortKey: -1753427955244
+    method: POST
+    body:
+      mimeType: application/x-www-form-urlencoded
+      params:
+        - name: client_secret
+          value: aeb992d5-4be4-4125-857b-6210776321d2
+          description: ""
+          disabled: false
+          id: pair_8ea7e8e3b2c24e628c6d3a7008158a7d
+        - name: grant_type
+          value: password
+          description: ""
+          disabled: false
+          id: pair_72f5a8d1abaf488c989e9e4cd353caee
+        - name: client_id
+          value: client1
+          description: ""
+          disabled: false
+          id: pair_2b0f1b9b50524e9b94f30118243dc1b4
+        - name: password
+          value: KongRul3z!
+          description: ""
+          disabled: false
+          id: pair_137e62e89b044575958fc8862050ff23
+        - name: username
+          value: demo
+          description: ""
+          disabled: false
+          id: pair_40d8aea3cdd54a62b27d423c937f60d5
+    headers:
+      - name: Content-Type
+        value: application/x-www-form-urlencoded
+      - name: User-Agent
+        value: insomnia/11.3.0
+    scripts:
+      afterResponse: |-
+        const jsonBody = insomnia.response.json();
+        insomnia.environment.set("access_token", jsonBody.access_token);
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
   - name: Transactions
     meta:
       id: fld_0e80579e4264462ba5c6683c055eaefd
@@ -160,85 +239,6 @@ collection:
             send: true
             store: true
           rebuildPath: true
-  - url: "{{ _['DP:8000'] }}/oidcIntrospection"
-    name: "Introspection "
-    meta:
-      id: req_65937da0cc8e43fc88195d076903a035
-      created: 1753427826639
-      modified: 1755488808941
-      isPrivate: false
-      description: ""
-      sortKey: -1753427826639
-    method: GET
-    headers:
-      - name: User-Agent
-        value: insomnia/11.3.0
-    authentication:
-      type: bearer
-      token: "{{ _.access_token }}"
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: " https://keycloak.apim.eu/auth/realms/kong/protocol/openid-connect/token"
-    name: Get OAuth Token
-    meta:
-      id: req_93a911c80b774d43958c8c031c61cff3
-      created: 1753427955244
-      modified: 1753428242559
-      isPrivate: false
-      description: ""
-      sortKey: -1753427955244
-    method: POST
-    body:
-      mimeType: application/x-www-form-urlencoded
-      params:
-        - name: client_secret
-          value: aeb992d5-4be4-4125-857b-6210776321d2
-          description: ""
-          disabled: false
-          id: pair_8ea7e8e3b2c24e628c6d3a7008158a7d
-        - name: grant_type
-          value: password
-          description: ""
-          disabled: false
-          id: pair_72f5a8d1abaf488c989e9e4cd353caee
-        - name: client_id
-          value: client1
-          description: ""
-          disabled: false
-          id: pair_2b0f1b9b50524e9b94f30118243dc1b4
-        - name: password
-          value: KongRul3z!
-          description: ""
-          disabled: false
-          id: pair_137e62e89b044575958fc8862050ff23
-        - name: username
-          value: demo
-          description: ""
-          disabled: false
-          id: pair_40d8aea3cdd54a62b27d423c937f60d5
-    headers:
-      - name: Content-Type
-        value: application/x-www-form-urlencoded
-      - name: User-Agent
-        value: insomnia/11.3.0
-    scripts:
-      afterResponse: |-
-        const jsonBody = insomnia.response.json();
-        insomnia.environment.set("access_token", jsonBody.access_token);
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:

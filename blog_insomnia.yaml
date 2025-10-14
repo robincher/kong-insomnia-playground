@@ -7,177 +7,6 @@ meta:
   description: Insomnia Workspace for
     https://github.com/robincher/kong-insomnia-playground.git
 collection:
-  - name: Transactions
-    meta:
-      id: fld_0e80579e4264462ba5c6683c055eaefd
-      created: 1730958511889
-      modified: 1730958511889
-      sortKey: -1730958511889
-      description: Everything about transactions
-    children:
-      - url: "{{ _.base_url }}/transactions"
-        name: List all transactions
-        meta:
-          id: req_699a711aa1274c06b42669a10500b2eb
-          created: 1730958511889
-          modified: 1730958801260
-          isPrivate: false
-          description: ""
-          sortKey: -1730958511889
-        method: GET
-        authentication:
-          type: apikey
-          key: apikey
-          value: "{{ _.apikey }}"
-          addTo: header
-        scripts:
-          preRequest: ""
-          afterResponse: ""
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _.base_url }}/transactions"
-        name: Create new transaction
-        meta:
-          id: req_28ffd4f3c5c54bc6bb29fcc97cb17660
-          created: 1730958511890
-          modified: 1730958511890
-          isPrivate: false
-          description: ""
-          sortKey: -1730958511890
-        method: POST
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "id": 42,
-              "source": "GR872659435350353",
-              "senderName": "Max Mustermann",
-              "destination": "DE8412325587359375895",
-              "amount": 42,
-              "currency": "EUR",
-              "subject": "Invoice #42-08/15"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-        authentication:
-          type: apikey
-          key: apikey
-          value: "{{ _.apikey }}"
-          addTo: header
-        scripts:
-          preRequest: ""
-          afterResponse: ""
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
-        name: Get specific transactions
-        meta:
-          id: req_33266309cf76483696bed7a7f4c36d4a
-          created: 1730958511890
-          modified: 1730958511890
-          isPrivate: false
-          description: ""
-          sortKey: -1730958511890
-        method: GET
-        authentication:
-          type: apikey
-          key: apikey
-          value: "{{ _.apikey }}"
-          addTo: header
-        scripts:
-          preRequest: ""
-          afterResponse: ""
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
-        name: Update a transaction
-        meta:
-          id: req_58ceed56154e49a09631271c78c06c6a
-          created: 1730958511890
-          modified: 1730958511890
-          isPrivate: false
-          description: ""
-          sortKey: -1730958511890
-        method: PATCH
-        body:
-          mimeType: application/json
-          text: |-
-            {
-              "id": 42,
-              "source": "GR872659435350353",
-              "senderName": "Max Mustermann",
-              "destination": "DE8412325587359375895",
-              "amount": 42,
-              "currency": "EUR",
-              "subject": "Invoice #42-08/15"
-            }
-        headers:
-          - name: Content-Type
-            value: application/json
-        authentication:
-          type: apikey
-          key: apikey
-          value: "{{ _.apikey }}"
-          addTo: header
-        scripts:
-          preRequest: ""
-          afterResponse: ""
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
-        name: Cancel a transaction
-        meta:
-          id: req_64dec9afb77940e5a1348c8f17324f85
-          created: 1730958511890
-          modified: 1730958511890
-          isPrivate: false
-          description: ""
-          sortKey: -1730958511890
-        method: DELETE
-        authentication:
-          type: apikey
-          key: apikey
-          value: "{{ _.apikey }}"
-          addTo: header
-        scripts:
-          preRequest: ""
-          afterResponse: ""
-        settings:
-          renderRequestBody: true
-          encodeUrl: true
-          followRedirects: global
-          cookies:
-            send: true
-            store: true
-          rebuildPath: true
-    scripts:
-      afterResponse: ""
-      preRequest: ""
   - url: "{{ _['DP:8000'] }}/oidcIntrospection"
     name: "Introspection "
     meta:
@@ -194,9 +23,6 @@ collection:
     authentication:
       type: bearer
       token: "{{ _.access_token }}"
-    scripts:
-      preRequest: ""
-      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -249,7 +75,6 @@ collection:
       - name: User-Agent
         value: insomnia/11.3.0
     scripts:
-      preRequest: ""
       afterResponse: |-
         const jsonBody = insomnia.response.json();
         insomnia.environment.set("access_token", jsonBody.access_token);
@@ -261,6 +86,159 @@ collection:
         send: true
         store: true
       rebuildPath: true
+  - name: Transactions
+    meta:
+      id: fld_0e80579e4264462ba5c6683c055eaefd
+      created: 1730958511889
+      modified: 1730958511889
+      sortKey: -1730958511889
+      description: Everything about transactions
+    children:
+      - url: "{{ _.base_url }}/transactions"
+        name: List all transactions
+        meta:
+          id: req_699a711aa1274c06b42669a10500b2eb
+          created: 1730958511889
+          modified: 1730958801260
+          isPrivate: false
+          description: ""
+          sortKey: -1730958511889
+        method: GET
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions"
+        name: Create new transaction
+        meta:
+          id: req_28ffd4f3c5c54bc6bb29fcc97cb17660
+          created: 1730958511890
+          modified: 1730958511890
+          isPrivate: false
+          description: ""
+          sortKey: -1730958511890
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "id": 42,
+              "source": "GR872659435350353",
+              "senderName": "Max Mustermann",
+              "destination": "DE8412325587359375895",
+              "amount": 42,
+              "currency": "EUR",
+              "subject": "Invoice #42-08/15"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Get specific transactions
+        meta:
+          id: req_33266309cf76483696bed7a7f4c36d4a
+          created: 1730958511890
+          modified: 1730958511890
+          isPrivate: false
+          description: ""
+          sortKey: -1730958511890
+        method: GET
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Update a transaction
+        meta:
+          id: req_58ceed56154e49a09631271c78c06c6a
+          created: 1730958511890
+          modified: 1730958511890
+          isPrivate: false
+          description: ""
+          sortKey: -1730958511890
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "id": 42,
+              "source": "GR872659435350353",
+              "senderName": "Max Mustermann",
+              "destination": "DE8412325587359375895",
+              "amount": 42,
+              "currency": "EUR",
+              "subject": "Invoice #42-08/15"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/transactions/{{ _.id }}"
+        name: Cancel a transaction
+        meta:
+          id: req_64dec9afb77940e5a1348c8f17324f85
+          created: 1730958511890
+          modified: 1730958511890
+          isPrivate: false
+          description: ""
+          sortKey: -1730958511890
+        method: DELETE
+        authentication:
+          type: apikey
+          key: apikey
+          value: "{{ _.apikey }}"
+          addTo: header
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
@@ -305,7 +283,7 @@ spec:
   contents:
     openapi: 3.0.1
     info:
-      version: 1.1.0
+      version: 1.1.1
       title: Transactions API of BanKonG
       description: >
         This API provides you access to the transactions of a logged in user.
@@ -503,7 +481,7 @@ spec:
   meta:
     id: spc_1331b1e403b5400a83ad8e2173148fe4
     created: 1730958500462
-    modified: 1755491561338
+    modified: 1760409241931
 testSuites:
   - name: New Suite
     meta:

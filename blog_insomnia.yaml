@@ -283,11 +283,11 @@ spec:
   contents:
     openapi: 3.0.0
     info:
-      version: 2.2.0
+      version: 2.3.0
       title: Blog
       license:
         name: Apache 2.0
-      description: Blog Service API
+      description: Blog Service
       contact:
         name: Kong
     servers:
@@ -338,7 +338,7 @@ spec:
   meta:
     id: spc_1331b1e403b5400a83ad8e2173148fe4
     created: 1730958500462
-    modified: 1760411249576
+    modified: 1760412668374
 testSuites:
   - name: New Suite
     meta:

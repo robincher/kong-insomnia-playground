@@ -31,7 +31,7 @@ jobs:
       if: steps.cache-inso.outputs.cache-hit != 'true'
       run: |
         mkdir -p /tmp/inso
-        curl -sL https://github.com/Kong/insomnia/releases/download/core%4011.1.0/inso-linux-x64-11.1.0.tar.xz -o inso.tar.xz
+        curl -sL https://github.com/Kong/insomnia/releases/download/core%4011.6.1/inso-linux-x64-11.6.1.tar.xz -o inso.tar.x
         tar -xf inso.tar.xz -C /tmp/inso
         chmod +x /tmp/inso/inso
     - name: LINT AND EXPORT SPEC
@@ -42,7 +42,7 @@ jobs:
         
         # Lint and export in one step
         inso --ci lint spec -w blog_insomnia.yaml Blog
-        inso --ci -w blog_insomnia.yaml export spec Blog > blog.yaml
+        inso -w blog_insomnia.yaml export spec Blog > blog.yaml
     - name: Upload blog spec
       uses: actions/upload-artifact@v4
       with:

@@ -82,7 +82,7 @@ jobs:
         export PATH="/tmp/deck:$PATH"
         
         # Backup existing configuration
-        deck gateway dump --konnect-token $KONNECT_TOKEN --konnect-control-plane-name $CP_NAME --select-tag gitops --tls-skip-verify > kong-backup.yaml
+        deck gateway dump --konnect-addr https://sg.api.konghq.com --konnect-token $KONNECT_TOKEN --konnect-control-plane-name $CP_NAME --select-tag gitops --tls-skip-verify > kong-backup.yaml
       env:
        KONNECT_TOKEN: ${{ secrets.KONNECT_TOKEN }}
        CP_NAME: ${{ secrets.CP_NAME }}

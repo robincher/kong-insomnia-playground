@@ -291,8 +291,8 @@ spec:
         depending on permissions).
 
 
-        :closed_lock_with_key: this api is protected by either OpenID Connect or
-        api-key
+        :closed_lock_with_key: this api is maybe protected by either OpenID
+        Connect or api-key
 
 
         :bulb: this API is rate limited
@@ -481,7 +481,7 @@ spec:
   meta:
     id: spc_1331b1e403b5400a83ad8e2173148fe4
     created: 1730958500462
-    modified: 1760409241931
+    modified: 1760409505890
 testSuites:
   - name: New Suite
     meta:

@@ -293,7 +293,7 @@ spec:
   contents:
     openapi: 3.0.1
     info:
-      version: 1.2.3
+      version: 1.2.4
       title: Transactions API of BanKonG
       description: >
         This API provides you access to the transactions of a logged in user.
@@ -491,7 +491,7 @@ spec:
   meta:
     id: spc_1331b1e403b5400a83ad8e2173148fe4
     created: 1730958500462
-    modified: 1760682072063
+    modified: 1760682245145
 testSuites:
   - name: New Suite
     meta:

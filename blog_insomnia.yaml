@@ -244,8 +244,19 @@ cookieJar:
   meta:
     id: jar_eeffcb9184b1ab85e651a6e3be6fee9c32521ebe
     created: 1753427685807
-    modified: 1753428244273
+    modified: 1760414766819
   cookies:
+    - key: KC_RESTART
+      maxAge: 0
+      domain: keycloak.apim.eu
+      path: /auth/realms/kong/
+      httpOnly: true
+      extensions:
+        - Version=1
+      hostOnly: true
+      creation: 2025-10-14T04:06:06.113Z
+      lastAccessed: 2025-10-14T04:06:06.115Z
+      id: 9fc9cbdb-30e1-4076-9ca9-22d572849544
     - id: 7ef7cc71-58a0-4fdd-a943-91a3ebe7b9dc
       key: KC_RESTART
       value: ""
@@ -253,22 +264,20 @@ cookieJar:
       path: /auth/realms/kong/
       secure: false
       httpOnly: true
-      extensions:
-        - Version=1
       hostOnly: true
 environments:
   name: Base Environment
   meta:
     id: env_eeffcb9184b1ab85e651a6e3be6fee9c32521ebe
     created: 1730958463822
-    modified: 1753428244276
+    modified: 1760414766822
     isPrivate: false
   subEnvironments:
     - name: OpenAPI env localhost:3000
       meta:
         id: env_038c957f9f1749c8bc57927d9655f4b4
         created: 1730958511888
-        modified: 1730958794085
+        modified: 1760414766821
         isPrivate: false
         sortKey: 1730958511888
       data:
@@ -279,11 +288,12 @@ environments:
         bearerToken: bearerToken
         base_url: "{{ _.host }}"
         id: b88f7029-fa93-41a5-9462-4884e544bf63
+        access_token: eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwbWVEV1VXbXZtcWg4cGNiQVgzUkxyMV9FSW9rQWV5cFA2dFN0M3Z5YXUwIn0.eyJqdGkiOiI3NTdkZDJiYS1hNzdjLTQyMDAtOTA3Zi04NTdmODc0NGQxNDciLCJleHAiOjE3NjA0MTUwNjUsIm5iZiI6MCwiaWF0IjoxNzYwNDE0NzY1LCJpc3MiOiJodHRwczovL2tleWNsb2FrLmFwaW0uZXUvYXV0aC9yZWFsbXMva29uZyIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI1NjQ0MzgxYy0zN2MyLTRkMmUtODg3OS1mYmUzZjFkOWE4N2UiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjbGllbnQxIiwiYXV0aF90aW1lIjowLCJzZXNzaW9uX3N0YXRlIjoiZjg4N2ExNjYtNWI4My00MDVhLTg0MjAtOGQ1YTUwOGY5MThlIiwiYWNyIjoiMSIsInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJrb25nX3JvbGUiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl19LCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIiwidmlldy1wcm9maWxlIl19fSwic2NvcGUiOiJwcm9maWxlIGtvbmdfYXBpX2FjY2VzcyBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJyb2xlcyI6WyJrb25nX3JvbGUiLCJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIl0sIm5hbWUiOiJLb25nIERlbW8iLCJncm91cHMiOlsia29uZ2VycyJdLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJkZW1vIiwiZ2l2ZW5fbmFtZSI6IktvbmciLCJmYW1pbHlfbmFtZSI6IkRlbW8iLCJlbWFpbCI6ImRlbW9AYXBpbS5ldSJ9.vC8W19UhnAFLhGxQaKDYVdLopzZc09aTdOJ1b-0PigodXkv7K1KFxKHtixcB-JOAOgeUl7YS4QdICfSMR9kDHE5dUPWWwUHt8TCzRAEAJBeLC1tT7LMrrsG1XHjoPH8Q7oVRJfBV5JQYuI5s4tG7yTGL-KclzQghbOMPTU0l7gIHH-oLEBRydTNWDfnP369YmdbbseGWg-TeKHI6Noo_km4iCuCIP47ez30T-a_Hf03_zVwptYZp0eCDxLAYuXORwoytErFPonE0XhYa6sTxWumi8i2q4AR2Ipr29fpUUrGBspTvSEzlyGQGtXam5HtXivS8vBE8QghVIfBcivsemA
 spec:
   contents:
     openapi: 3.0.1
     info:
-      version: 1.1.1
+      version: 1.2.1
       title: Transactions API of BanKonG
       description: >
         This API provides you access to the transactions of a logged in user.
@@ -481,7 +491,7 @@ spec:
   meta:
     id: spc_1331b1e403b5400a83ad8e2173148fe4
     created: 1730958500462
-    modified: 1760409505890
+    modified: 1760664599390
 testSuites:
   - name: New Suite
     meta:
